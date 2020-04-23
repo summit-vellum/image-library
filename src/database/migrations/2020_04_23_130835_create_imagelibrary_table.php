@@ -13,9 +13,16 @@ class CreateImagelibraryTable extends Migration
      */
     public function up()
     {
-        Schema::create('imagelibraries', function (Blueprint $table) {
+        Schema::create('image_libraries', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('photo_id')->nullable();
+            $table->string('path', 255)->nullable();
+            $table->string('contributor', 255)->nullable();
+            $table->string('contributor_fee', 255)->nullable();
+            $table->string('tags', 255)->nullable();
+            $table->string('illustrator', 255)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
