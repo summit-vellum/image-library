@@ -1,0 +1,26 @@
+{
+    "name": "quill/imagelibrary",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gien Mangaliman",
+            "email": "gien.mangaliman@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Quill\\ImageLibrary\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Quill\\ImageLibrary\\ImageLibraryServiceProvider"
+            ]
+        }
+    }
+}
