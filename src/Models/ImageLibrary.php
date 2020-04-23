@@ -7,7 +7,7 @@ use Vellum\Models\BaseModel;
 class ImageLibrary extends BaseModel
 {
 
-    protected $table = 'imagelibraries';
+    protected $table = 'image_libraries';
 
     public function history()
     {
