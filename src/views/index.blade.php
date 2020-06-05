@@ -292,6 +292,7 @@ $('#imagelibrary-container').on('scroll', function(){
     $('form#photo').find('#credit_label').val(image.credit_label);
     $('form#photo').find('#credit_link').val(image.credit_link);
     $('form#photo').find('#tags').val(image.tags);
+    $('form#photo').find('#alt_text').val(image.alt_text);
     $('#submit').prop('disabled', false);
     // enable add to content button
     $('#insertImage').prop('disabled', false);
