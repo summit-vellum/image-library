@@ -32,8 +32,8 @@ class ImageLibraryTableSeeder extends Seeder
     				'tags' => $image->tags,
     				'alt_text' => isset($image->alt_text) ? $image->alt_text : NULL,
     				'illustrator' => $image->illustrator,
-    				'created_at'=> $image->date_created,
-    				'updated_at'=> $image->date_modified
+    				'created_at'=> ($image->date_created != '0000-00-00 00:00:00') ? $image->date_created : NULL,
+    				'updated_at'=> ($image->date_modified != '0000-00-00 00:00:00') ? $image->date_modified : NULL
     			]);
 
     			$this->command->getOutput()->progressAdvance();
