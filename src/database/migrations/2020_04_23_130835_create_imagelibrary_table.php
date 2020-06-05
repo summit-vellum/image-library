@@ -21,6 +21,7 @@ class CreateImagelibraryTable extends Migration
             $table->string('contributor_fee', 255)->nullable();
             $table->string('tags', 255)->nullable();
             $table->string('illustrator', 255)->nullable();
+            $table->string('alt_text', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

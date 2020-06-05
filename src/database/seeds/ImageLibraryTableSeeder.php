@@ -12,7 +12,35 @@ class ImageLibraryTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(ImageLibrary::class, 10)->create();
+        $old_db = DB::connection('olddb');
+
+    	$itemsPerBatch = 500;
+
+    	$images = $old_db->table('tbl_image_library');
+
+    	$this->command->getOutput()->progressStart($images->count());
+
+    	$vellumImages = $images->orderBy('id')->chunk($itemsPerBatch, function($images){
+    		foreach ($images as $image) {
+    			$migratedImage = new ImageLibrary;
+    			$migratedImage->create([
+    				'id' => $image->id,
+    				'photo_id' => $image->photo_id,
+    				'path' => $image->path,
+    				'contributor' => $image->contributor,
+    				'contributor_fee' => $image->contributor_fee,
+    				'tags' => $image->tags,
+    				'alt_text' => isset($image->alt_text) ? $image->alt_text : NULL,
+    				'illustrator' => $image->illustrator,
+    				'created_at'=> $image->date_created,
+    				'updated_at'=> $image->date_modified
+    			]);
+
+    			$this->command->getOutput()->progressAdvance();
+    		}
+    	});
+
+    	$this->command->getOutput()->progressFinish();
     }
 
 }

@@ -13,6 +13,11 @@
 
 Route::group(['middleware' => 'web'], function() {
 
-    // ... Route logic goes here
+	Route::group(['prefix' => '/image-library/feed'], function () {
+		Route::get('/', '\Quill\ImageLibrary\Http\Controllers\ImageLibraryController@index')->name('imagelibrary.feed');
+    	Route::put('/{id}', '\Quill\ImageLibrary\Http\Controllers\ImageLibraryController@update')->where(['id'=>'([0-9]+)']);
+    	Route::delete('/{id}', '\Quill\ImageLibrary\Http\Controllers\ImageLibraryController@destroy')->where(['id'=>'([0-9]+)'])->name('imagelibrary.destroy');
+    	Route::post('/', '\Quill\ImageLibrary\Http\Controllers\ImageLibraryController@store');
+	});
 
 });
